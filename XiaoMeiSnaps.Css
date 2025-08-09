@@ -1,0 +1,408 @@
+body {
+    background-color: #fefdfb;
+    font-family: Arial, sans-serif;
+    margin: 0;
+  }
+  
+  header {
+    background-color: #d8a7a7;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .intro img {
+    width: 300px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease; /* Smooth zoom transition */
+  }
+  
+  .intro img:hover {
+    transform: scale(1.05); /* Grows the image slightly */
+    cursor: pointer;
+  }
+  
+  .logo a {
+    color: rgb(244, 233, 218); /* starting color */
+    text-decoration: none;
+    transition: color 0.3s ease; /* this makes the color fade smoothly */
+  }
+  
+  .logo a:hover {
+    color: #322227; /* target hover color */
+  }
+  
+  nav a {
+    color: rgb(244, 233, 218); /* match logo color */
+    text-decoration: none;
+    margin-left: 1.5rem;
+    font-size: 1rem;
+    transition: color 0.3s ease; /* ✨ add this line for fading */
+  }
+  
+  nav a:hover {
+    color: #322227; /* ✨ match logo hover color */
+    text-decoration: underline; /* optional */
+  }
+  
+  .intro {
+    display: flex;
+    flex-direction: row;   /* 👈 horizontal layout */
+    align-items: center;   /* vertically aligned */
+    justify-content: center; /* horizontally centered */
+    gap: 2rem;
+    margin-bottom: 3rem;
+    padding-top: 4rem;
+    text-align: left;      /* optional: keeps text readable */
+    flex-wrap: wrap;       /* responsive: stacks on small screens */
+  }
+
+  .fade-in {
+    opacity: 0;                 /* Start invisible */
+    animation: fadeIn 1.5s ease forwards;
+  }
+  
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }
+  .hero-wrapper {
+    position: relative;
+    z-index: 0;
+    overflow: hidden;
+  }
+  
+  .carousel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh; /* ✅ Full viewport height */
+    z-index: -1;
+    opacity: 0.15;
+  }
+  
+  
+  .carousel .slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }
+  
+  .carousel .active {
+    opacity: 1;
+  }
+
+  .icon-section {
+    display: flex;
+    justify-content: center;
+    gap: 4rem; /* spacing between icons */
+    padding: 2rem 0;
+    align-items: center;
+    flex-wrap: wrap; /* stacks icons on small screens */
+  }
+  
+  .icon-section img {
+    width: 70px;
+    height: auto;
+    opacity: 0.85;
+    transition: transform 0.3s ease;
+  }
+  
+  .icon-section img:hover {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+
+  .center-wrapper {
+    display: flex;
+    flex-wrap: wrap;    /* allow wrapping on smaller screens */
+    justify-content: center;
+    gap: 3rem;          /* space between buttons */
+    margin: 3rem 0;     /* consistent top/bottom spacing */
+  }
+  
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&display=swap');
+
+  
+  .carousel-button {
+    text-decoration: none;
+  }
+  
+  .mini-carousel {
+    position: relative;
+    width: 300px;
+    height: 450px;
+    overflow: hidden;
+    border-radius: 0;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+    transition: transform 0.4s ease;
+  }
+  
+  .mini-carousel:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Black overlay on carousel */
+.mini-carousel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,.45); /* Adjust opacity for darkness */
+  pointer-events: none;
+  z-index: 2; /* above images, below text */
+}
+
+/* Overlay text styling */
+.carousel-title {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;  /* centers horizontally */
+  align-items: center;      /* centers vertically */
+  text-align: center;       /* centers multi-line text */
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: bold;
+  z-index: 3;
+  pointer-events: none;
+}
+
+
+  .mini-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+    z-index: 1;
+  }
+  
+  .mini-slide.active {
+    opacity: 1;
+  }
+  .follow-wrapper {
+    position: relative;
+    display: inline-block;
+    width: fit-content;
+    height: fit-content;
+    overflow: hidden;
+  }
+  
+  .follow-wrapper img {
+    transition: transform 0.1s ease-out;
+    will-change: transform;
+    pointer-events: none; /* so cursor events work properly */
+  }
+
+  .floating-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('Mer.jpg');
+    background-size: 100% 100%; /* ✅ This stretches it fully */
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.15;
+    pointer-events: none;
+    z-index: -10;
+    transition: transform 0.2s ease-out;
+    will-change: transform;
+    filter: blur(0.5px); /* Optional for a subtle soft effect */
+  }
+
+  .portrait-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    padding: 2rem;
+  }
+  
+  .portrait-gallery img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    object-fit: cover;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .portrait-gallery img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+  }
+  /* Grid layout: side-by-side, responsive */
+.portrait-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 12px;
+  padding: 2rem;
+}
+
+/* Images: no curved edges, nice crop */
+.portrait-gallery img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 3 / 4;      /* keeps a tall portrait feel */
+  object-fit: cover;
+  border-radius: 0;         /* ⬅ no rounded corners */
+  cursor: zoom-in;
+}
+
+/* Lightbox */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  display: none;            /* toggled with .open */
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.9);
+  z-index: 9999;
+}
+
+.lightbox.open { display: flex; }
+
+.lightbox img {
+  max-width: 90vw;
+  max-height: 90vh;
+  width: auto;
+  height: auto;
+  cursor: zoom-out;
+  box-shadow: 0 10px 40px rgba(0,0,0,.6);
+}
+
+.lightbox .close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  font-size: 32px;
+  line-height: 1;
+  background: transparent;
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+}
+
+.branding-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.branding-button {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: 0; /* square edges */
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+.branding-button img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.branding-button::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45); /* black cast */
+  transition: background 0.3s ease;
+}
+
+.branding-button:hover {
+  transform: scale(1.03);
+}
+
+.branding-button:hover::after {
+  background: rgba(0,0,0,0.25); /* lighter on hover */
+}
+
+.branding-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  z-index: 1;
+  padding: 1rem;
+}
+
+.contact-section {
+  text-align: center;
+  padding: 3rem 1rem;
+}
+
+.contact-icons {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.contact-icons img {
+  width: 60px;
+  height: 60px;
+  transition: transform 0.3s ease;
+}
+
+.contact-icons img:hover {
+  transform: scale(1.15);
+}
+.resume-downloads {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin: 3rem 0;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.resume-item h3 {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.resume-item img {
+  width: 80px;
+  height: 80px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.resume-item img:hover {
+  transform: scale(1.15);
+}
+.intro-paragraph {
+  font-size: 1.5rem; /* bigger text */
+  line-height: 1.8;   /* keeps it readable */
+}
+
+
+
+  
+  
